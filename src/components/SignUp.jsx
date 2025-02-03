@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "./Signup.css"; // Import the CSS file
 
 const SignUp = () => {
   const [username, setUsername] = useState("");
@@ -26,33 +27,33 @@ const SignUp = () => {
   };
 
   return (
-    <div>
-      <h2>Sign Up</h2>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Username:</label>
+    <div className="signup-container">
+      <div className="signup-box">
+        <h2>Sign Up</h2>
+        {error && <p style={{ color: "red" }}>{error}</p>}
+        <form onSubmit={handleSubmit}>
           <input
             type="text"
+            placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
+            className="signup-input"
           />
-        </div>
-        <div>
-          <label>Password:</label>
           <input
             type="password"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            className="signup-input"
           />
-        </div>
-        <button type="submit">Sign Up</button>
-      </form>
-      <p>
-        Already have an account? <button onClick={() => navigate("/login")}>Login</button>
-      </p>
+          <button type="submit" className="signup-button">Sign Up</button>
+        </form>
+        <p className="login-text">
+          Already have an account? <button onClick={() => navigate("/login")}>Login</button>
+        </p>
+      </div>
     </div>
   );
 };
